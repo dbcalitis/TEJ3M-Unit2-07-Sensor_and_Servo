@@ -19,7 +19,6 @@ int angle; // variable for the angle of the servo
 bool clockwise = true; // determines the direction of servo's movement
 int maxAngle = 180;
 int maxDistance = 50;
-int interval = 0;
 
 void setup() {
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an OUTPUT
@@ -62,15 +61,14 @@ void loop() {
   // The servo will only rotate if the distance is below 50cm
   if (distance < maxDistance) {
     if (clockwise) {
-      	angle++;
-    	servo.write(angle);
-    	delay(interval);
-  	} else {
+        angle++;
+        servo.write(angle);
+    } else {
       angle--;
       servo.write(angle);
-  	  delay(interval);
-  	}
+    }
   }
+ 
   Serial.print("Angle: ");
   Serial.println(angle);
 }
